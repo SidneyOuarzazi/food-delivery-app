@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   resources :customers, only: [:index, :create]
   resources :meals, only: [:index, :create]
-  resources :orders, only: [:index, :new, :create] do
-    resources :order_details, only: [:create]
+  resources :orders, only: [:index, :new, :create, :update] do
+    resources :order_details, only: [:index, :create]
   end
 end

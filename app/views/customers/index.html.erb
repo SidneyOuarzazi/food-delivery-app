@@ -1,2 +1,14 @@
-<h1>Customers#index</h1>
-<p>Find me in app/views/customers/index.html.erb</p>
+<h1>Customers</h1>
+<ul>
+  <% @customers.each do |customer| %>
+  <li>
+    <%= "#{customer.name} - #{customer.address}" %>
+  </li>
+  <% end %>
+</ul>
+<h2>New customer</h2>
+<%= simple_form_for(@customer) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :address %>
+  <%= f.button :submit %>
+<% end %>

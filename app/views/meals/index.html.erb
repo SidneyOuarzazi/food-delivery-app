@@ -1,2 +1,15 @@
-<h1>Meals#index</h1>
-<p>Find me in app/views/meals/index.html.erb</p>
+<h1>Meals</h1>
+<ul>
+  <% @meals.each do |meal| %>
+  <li>
+    <%= "#{meal.name} - #{meal.description} - #{meal.price}" %>
+  </li>
+  <% end %>
+</ul>
+<h2>Add a new meal</h2>
+<%= simple_form_for(@meal) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :price %>
+  <%= f.button :submit %>
+<% end %>

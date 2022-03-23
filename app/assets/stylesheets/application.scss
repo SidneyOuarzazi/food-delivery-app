@@ -10,3 +10,8 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+body {
+  height:100%;
+  padding-bottom: 60px;
+}

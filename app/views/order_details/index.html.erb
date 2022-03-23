@@ -1,0 +1,18 @@
+<h1>Order for <%= @order.customer.name %> - Amount = <%= @order.amount %>€ </h1>
+<ul>
+  <% @order_details.each do |item| %>
+  <li>
+    <%= "#{item.meal.name} - #{item.meal.price}€ - #{item.quantity}" %>
+  </li>
+  <% end %>
+</ul>
+<h2> What item to add ? </h2>
+<div data-controller="updateorder">
+  <%= simple_form_for [@order, @order_detail], data: { action: "updateorder#next" } do |f|  %>
+    <%= f.association :meal %>
+    <%= f.input :quantity %>
+    <%= f.button :submit %>
+  <% end %>
+  <%= link_to 'Save order', order_path(id: @order.id, status: "Pending"), method: :patch, value: "Pending", data: { updateorder_target: 'savelink' } %>
+  <%= link_to 'Ready to go', order_path(id: @order.id, status: "Ready to go"), method: :patch %>
+</div>
